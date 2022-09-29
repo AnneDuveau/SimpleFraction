@@ -46,18 +46,21 @@ Validez les changements;
 Vous utiliserez le protocole `https` pour cela;
 Vérifiez avec le navigateur;
     ```bash
-    # Commandes pour publier les modifications
+    $ git commit -m "modif..."
+    $ git push
     ```
 1. Sur la forge, ajoutez un fichier de documentation `README.md`.
 Quelle syntaxe est utilisée pour ce fichier ?
-    > Répondre ici
+    > La synthaxe Markdown
 1. Récupérez localement les modifications effectuées sur la forge.
     ```bash
-    # Répondre ici
+    $ git pull ???
     ```
 1. Ajoutez les répertoires et fichiers issus de la compilation aux fichiers ignorés par `git` (cf. [`.gitignore` pour Java](https://github.com/github/gitignore/blob/main/Java.gitignore));
     ```bash
-    # Copier ici le contenu de `.gitignore`
+    # Copier ici le contenu de `.gitignore
+    $ alors là aucune idée
+
     ```
 1. Retirez les fichiers de configuration de l'IDE du projet;
     ```bash
@@ -80,22 +83,38 @@ Vous respecterez les consignes ci-dessous :
 
 1. Ajoutez les attributs représentants le numérateur et le dénominateur (nombres entiers).
     ```Java
-    // Déclaration des attributs
+    private int a;
+    private int b;
     ```
 1. Ajoutez les constructeurs (cf. [Constructor Declarations](https://docs.oracle.com/javase/specs/jls/se19/html/jls-8.html#jls-8.8)) suivants :
     * initialisation avec un numérateur et un dénominateur,
     * initialisation avec juste le numérateur (dénominateur égal à _1_),
     * initialisation sans argument (numérateur égal _0_ et dénominateur égal à _1_),
     ```Java
-    // Assertions pour tester les constructeurs (avec toString)
+    Fraction x = new Fraction(3,4);
+    Fraction y = new Fraction (3);
+    Fraction z = new Fraction ();
+
+    System.out.println(x);
+    System.out.println(y);
+    System.out.println(z);
     ```
 1. Ajoutez les fractions constantes ZERO (0, 1) et UN (1, 1) (cf. [Constants in Java](https://www.baeldung.com/java-constants-good-practices)),
     ```Java
-    // Déclaration des constantes
+    private static final int ONE = 1;
+    private static final int ZERO = 0;
     ```
 1. Ajoutez une méthode de consultation du numérateur et du dénominateur (par convention, en Java, une méthode retournant la valeur de l'attribut `anAttribute` est nommée `getAnAttribute`),
     ```Java
-    // Définition des getters
+    public int getNumerateur()
+    {
+        return numerateur;
+    }
+
+    public int getDenominateur()
+    {
+        return denominateur;
+    }
     ```
 1. Ajoutez une méthode de consultation de la valeur sous la forme d'un nombre en virgule flottante (méthode `doubleValue()`) (cf. [`java.lang.Number`](https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Number.html)),
    ```Java
