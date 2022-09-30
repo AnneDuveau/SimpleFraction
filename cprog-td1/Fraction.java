@@ -41,11 +41,14 @@ public class Fraction{
 
     @Override
     public String toString() {
-    return numerateur +"/"+ denominateur;
-    
+        return numerateur +"/"+ denominateur;
+    }
+
+    public double getDoubleValue() {
+        return (double)this.numerateur/(double)this.denominateur;
+    }
     
 
     
 
-   }
 }

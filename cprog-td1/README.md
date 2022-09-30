@@ -144,16 +144,20 @@ Vous respecterez les consignes ci-dessous :
     }
     ```
 1. Ajoutez une méthode de consultation de la valeur sous la forme d'un nombre en virgule flottante (méthode `doubleValue()`) (cf. [`java.lang.Number`](https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Number.html)),
-   ```Java
-    public abstract double doubleValue() 
+    ```Java
+    public double doubleValue() {
+        return (double)this.numerateur/(double)this.denominateur;
+    }
     ```
 1. Ajoutez une méthode permettant l'addition de deux fractions (la méthode `add` prend en paramètre *une* fraction et *retourne* la somme de la fraction courante et du paramètre),
    ```Java
-    // Assertions pour tester l'addition
+    public Fraction add(Fraction f1) {
+        return 
+    }
     ```
 1. Ajoutez le test d'égalité entre fractions (deux fractions sont égales si elles représentent la même fraction réduite) (cf. [`java.lang.Object.equals`](https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Object.html#equals(java.lang.Object))),
    ```Java
-    // Assertions pour tester l'égalité
+    assert "1/1".equals(f.toString()): "assertion faux"
     ```
 1. Ajoutez la comparaison de fractions selon l'ordre naturel (cf. [`java.lang.Comparable`](https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Comparable.html)).
    ```Java
