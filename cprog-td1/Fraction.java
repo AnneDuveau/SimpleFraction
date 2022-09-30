@@ -1,10 +1,15 @@
 public class Fraction{
+
+    // attributs
     private int numerateur;
     private int denominateur;
 
-    private static final int ONE = 1;
-    private static final int ZERO = 0;
+    public static final Fraction ONE = new Fraction(1);
+    public static final Fraction ZERO = new Fraction();
 
+
+
+    // Constructeurs
     public Fraction(int numerateur, int denominateur){
         this.numerateur = numerateur;
         this.denominateur = denominateur;
@@ -20,6 +25,8 @@ public class Fraction{
         this.denominateur = 1;    
     }
 
+
+    // méthodes
     public int getNumerateur()
     {
         return numerateur;
@@ -29,6 +36,8 @@ public class Fraction{
     {
         return denominateur;
     }
+
+
 
     @Override
     public String toString() {

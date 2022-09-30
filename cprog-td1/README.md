@@ -54,24 +54,51 @@ Quelle syntaxe est utilisée pour ce fichier ?
     > La synthaxe Markdown
 1. Récupérez localement les modifications effectuées sur la forge.
     ```bash
-    $ git pull ???
+    $ git pull
     ```
 1. Ajoutez les répertoires et fichiers issus de la compilation aux fichiers ignorés par `git` (cf. [`.gitignore` pour Java](https://github.com/github/gitignore/blob/main/Java.gitignore));
     ```bash
-    # Copier ici le contenu de `.gitignore
-    $ alors là aucune idée
+    # Compiled class file
+    *.class
+
+    # Log file
+    *.log
+
+    # BlueJ files
+    *.ctxt
+
+    # Mobile Tools for Java (J2ME)
+    .mtj.tmp/
+
+    # Package Files #
+    *.jar
+    *.war
+    *.nar
+    *.ear
+    *.zip
+    *.tar.gz    
+    *.rar
+
+    # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+    hs_err_pid*
+    replay_pid*
 
     ```
 1. Retirez les fichiers de configuration de l'IDE du projet;
     ```bash
-    # Répondre ici
+    # Ces fichiers n'existent pas sur l'IDE Visual studio Code 
     ```
     Ajoutez-les aux fichiers ignorés par `git`.
     ```bash
-    # Copier ici les modifications de `.gitignore`
+    # rééssayer avec un autre IDE peut-être?
     ```
 1. Configurez l'accès par clé publique/clé privée à la forge (cf. [Connecting to GitHub with SSH](https://docs.github.com/en/authentication/connecting-to-github-with-ssh)).
-    > Expliquez la procédure de façon synthétique
+    > Procédure de la configuration de la clé à la forge:
+    - Avant de générer une clé, on vérifie s'il n'en existe pas déjà une dans notre machine locale.
+    - Dans le cas où il n'en existe aucune, générer la clé sur le terminal.
+    - ajouter la clé SSH sur le github dans les paramètres
+    SSH ( = Secure Shell)
+
 
 ## Partie II (à faire durant le TD) : compléter la classe `Fraction`
 Dans cet partie, vous compléterez les classes `Fraction` et `Main`.
@@ -101,8 +128,8 @@ Vous respecterez les consignes ci-dessous :
     ```
 1. Ajoutez les fractions constantes ZERO (0, 1) et UN (1, 1) (cf. [Constants in Java](https://www.baeldung.com/java-constants-good-practices)),
     ```Java
-    private static final int ONE = 1;
-    private static final int ZERO = 0;
+    public static final Fraction ONE = new Fraction(1);
+    public static final Fraction ZERO = new Fraction();
     ```
 1. Ajoutez une méthode de consultation du numérateur et du dénominateur (par convention, en Java, une méthode retournant la valeur de l'attribut `anAttribute` est nommée `getAnAttribute`),
     ```Java
@@ -118,7 +145,7 @@ Vous respecterez les consignes ci-dessous :
     ```
 1. Ajoutez une méthode de consultation de la valeur sous la forme d'un nombre en virgule flottante (méthode `doubleValue()`) (cf. [`java.lang.Number`](https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Number.html)),
    ```Java
-    // Assertions pour tester la conversion
+    public abstract double doubleValue() 
     ```
 1. Ajoutez une méthode permettant l'addition de deux fractions (la méthode `add` prend en paramètre *une* fraction et *retourne* la somme de la fraction courante et du paramètre),
    ```Java
@@ -147,46 +174,66 @@ Vous pouvez répondre en utilisant le shell de votre choix (*bash*, *Powershell*
 Pour répondre à ces questions, vous devez effectuer les recherches documentaires adéquates (livre, web, …).
 
 1. Quel OS et quel shell de commande utilisez-vous ?
-    > Répondre ici
+    
+    > J'utilise Linux, et  j'utilise le bash.
 1. Quelle commande permet d'obtenir de l'aide ?
 Donnez un exemple.
     ```bash
-    # Répondre ici
+    $ help nom 
+    # permet d'en savoir plus sur la fonction nom
+    
+    $ man mv
+    # permet de comprendre comment fonctionne la commande mv 
     ```
 1. Donnez la ou les commandes shell permettant de
     1. afficher les fichiers d'un répertoire triés par taille (taille affichée lisiblement)
         ```bash
-        # Répondre ici
+        $ ls -lS /path/to/folder
+        # -S va trier les fichiers par taille
+        # sort by size
         ```
     1. compter le nombre de ligne d'un fichier
         ```bash
-        # Répondre ici
+        $ wc -l < text.txt
+        # le paramètre -c de la commande grep renvoie le nombre de lignes.
         ```
     1. afficher les lignes du fichier `Main.java` contenant la chaîne `uneVariable`
         ```bash
-        # Répondre ici
+        $ grep "uneVariable" -Rn mon_repertoire/
+        # -n c'est pour le numéro de la ligne
+        # -R: lis tous les fichiers dans chaque directory, de manière récursive.
         ```
     1. afficher récursivement les fichiers `.java` contenant la chaîne `uneVariable`
         ```bash
-        # Répondre ici
+        $
         ```
     1. trouver les fichiers (pas les répertoires) nommés `README.md` dans une arborescence de répertoires
         ```bash
-        # Répondre ici
+        $ find /chemin/toto -type f -name "README.md"
         ```
     1. afficher les différences entre deux fichiers textes
         ```bash
-        # Répondre ici
+        diff text1 text2
+        # compare les fichiers text1 et text2 ligne par ligne
+        
+        cmp text1 text2
+        # compare les fichiers caractère par caractère
+        
         ```
 1. Expliquez en une ou deux phrases le rôle de ces commandes et dans quel contexte elles peuvent être utiles pour un développeur.
     * `ssh`
-        > Répondre ici
+        > Commande (protocole réseau) qui permet des connexions distantes sécurisées entre deux systèmes
+        Permet par exemple de gérer les machines, copier ou déplacer des fichiers entre les systèmes.
+        On peut par exemple se connecter à un serveur distant grâce à ça.
+
     * `screen`/`tmux`
-        > Répondre ici
+        > permet d'ouvrir plusieurs terminaux dans une même console et de passer de l'un à l'autre et de les récupérer plus tard.
     * `curl`/[HTTPie](https://httpie.org/)
-        > Répondre ici
+        > Curl (ou Client URL) est conçue pour fonctionner comme un moyen de vérifier la connectivité aux URL
+        Pour transférer des données d'un serveur ou sur un serveur.
+
     * [jq](https://stedolan.github.io/jq/)
-        > Répondre ici
+        > jq est comme la commande "sed", "awk", et "grep" et peut-être utilisé pour fragmenter, filtrer, transformer les données
 
 ### Découverte de votre *IDE*
 Dans cet exercice, vous expliquerez en quelques phrases comment vous réalisez les actions ci-dessous dans votre IDE.
@@ -194,7 +241,7 @@ Vous pouvez choisir l'IDE/éditeur de texte de votre choix.
 Pour réaliser cette exercice, vous devez bien évidemment vous reporter à la documentations de l'IDE ([IntelliJ IDEA](https://www.jetbrains.com/help/idea/discover-intellij-idea.html#developer-tools), [Visual Studio Code](https://code.visualstudio.com/docs), [Eclipse](https://help.eclipse.org/2020-09/index.jsp), …).
 
 1. Quels IDE ou éditeurs de texte utilisez-vous pour le développement Java ?
-    > Répondre ici
+    > Pour le développement de Java, j'utilise Visual Studio Code.
 
     Pour la suite, ne considérez que l'un de vos choix.
 1. Comment vérifier/définir que l'encodage utilisé est *UTF-8* ?
